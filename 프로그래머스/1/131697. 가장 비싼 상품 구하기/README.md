@@ -1,3 +1,12 @@
+# 학습 포인트
+- 모든 집계함수는 단일 연산(결과 1개)
+- MAX() / MIN()은 인덱스가 있으면 즉시 반환 가능
+- 시간 복잡도
+  - MIN, MAX O(n) → O(1) (인덱스 有)
+  - COUNT, SUM, AVG O(n)
+  - GROUP BY O(n log n)
+
+
 # [level 1] 가장 비싼 상품 구하기 - 131697 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/131697) 
