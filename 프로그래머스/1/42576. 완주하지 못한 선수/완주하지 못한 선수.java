@@ -6,22 +6,12 @@ class Solution {
         Arrays.sort(participant);
         Arrays.sort(completion);
         
-        String answer = "";
-        
         for (int i = 0; i < completion.length; i++) {
             if (!participant[i].equals(completion[i])) {
-                answer = participant[i];
-                break;
+                return participant[i];
             }
         }
         
-        System.out.println(answer);
-
-        if (answer.equals("")) {
-            answer = participant[participant.length - 1];
-        }
-        
-
-        return answer;
+        return participant[participant.length - 1];
     }
 }
