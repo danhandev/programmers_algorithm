@@ -1,3 +1,12 @@
+# 학습 포인트 
+- 사고 흐름
+  - 동명이인(중복)이 있으므로 단순 비교는 불가 -> 카운팅(Counting) 필요
+  - 정렬로 비교할까, 해시로 비교할까? -> 정렬은 O(n log n), 해시는 O(n) -> 해시가 더 효율적
+- 문자열 비교 시 ==은 주소(참조값) 비교, equals()는 내용 비교
+- 배열 길이는 participant.length
+- 배열 마지막 원소 접근 arr[arr.length - 1] <- Java는 음수 인덱스 불가
+
+
 # [level 1] 완주하지 못한 선수 - 42576 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42576?language=java) 
