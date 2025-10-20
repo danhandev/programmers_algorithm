@@ -1,3 +1,15 @@
+# 학습 내용
+### COALESCE
+- '통합하다'라는 뜻
+- COALESCE(col1, col2, col3, 'default')는 NULL 대체 함수로, 인자로 받은 표현식들을 왼쪽에서 오른쪽 순서로 평가하여 첫 번째 NULL이 아닌 값을 반환
+- col1이 NULL이면 col2, col2도 NULL이면 col3 순으로 평가
+- COALESCE(컬럼명, '대체값')
+- 단순한 스칼라 함수로 NULL 검사만 수행하므로 O(1) 연산
+### ORDER BY ANIMAL_ID 정렬의 시간 복잡도: O(N log N)
+- 인덱스가 없을 때 정렬해야 할 튜플이 N개면 평균 시간 복잡도는 O(N log N)
+- MySQL 내부 정렬 알고리즘은 filesort
+
+
 # [level 2] NULL 처리하기 - 59410 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/59410) 
