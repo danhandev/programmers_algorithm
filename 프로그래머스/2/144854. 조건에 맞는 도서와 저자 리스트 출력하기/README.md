@@ -1,3 +1,13 @@
+# 학습 내용 정리
+### SQL 작성 순서 & 실행 순서
+- 작성 순서 : SELECT - FROM - JOIN/ON - WHERE - GROUP BY - HAVING - ORDER BY - LIMIT/OFFSET
+- 실행 순서 : FROM - JOIN/ON - WHERE - GROUP BY - HAVING - SELECT - DISTINCT - ORDER BY - LIMIT/OFFSET
+### MySQL 정렬 알고리즘
+- ORDER BY 시 QuickSort 기반의 in-memory 정렬을 수행하고, 버퍼를 초과하면 Filesort(디스크 기반)로 전환된다.
+- 데이터량이 많을 경우 sort_buffer_size와 인덱스를 통해 정렬 비용을 줄일 수 있다.
+- 기본적으로 O(n log n)
+### FROM 절의 AS 생략
+
 # [level 2] 조건에 맞는 도서와 저자 리스트 출력하기 - 144854 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/144854) 
