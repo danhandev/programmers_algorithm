@@ -8,14 +8,24 @@ import java.util.Comparator;
 */
 class Solution {
     public String solution(int[] numbers) {
-        Comparator<String> cmp = (a, b) -> (b + a).compareTo(a + b);
+        // 두 수를 붙혔을 때 큰 수
+        Comparator<String> cmp = (a, b) -> (b+a).compareTo(a+b);
         PriorityQueue<String> pq = new PriorityQueue<>(cmp);
-
-        for (int n : numbers) pq.offer(String.valueOf(n));
+        
+        // PriorityQueue에 삽입
+        for (int num : numbers) {
+            pq.offer(String.valueOf(num));
+        }
+        
+        // 모든 입력이 0일 경우 처리
         if (pq.peek().equals("0")) return "0";
-
+        
+        // 문자열 병합
         StringBuilder sb = new StringBuilder();
-        while (!pq.isEmpty()) sb.append(pq.poll());
+        while(!pq.isEmpty()) {
+            sb.append(pq.poll());
+        }
+        
         return sb.toString();
     }
 }
