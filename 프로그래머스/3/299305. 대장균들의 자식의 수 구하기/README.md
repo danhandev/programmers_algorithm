@@ -1,3 +1,28 @@
+# 생각 과정
+- 각 개체별 자식 수를 세는 GROUP BY 문제입니다.
+- 자식이 없는 개체도 포함해야 하므로 LEFT JOIN 또는 COUNT의 조건 처리가 필요함
+
+[생각 과정]
+
+1. ECOLI_DATA 테이블에는 각 개체의 부모 ID(PARENT_ID)가 존재함
+→ 어떤 개체의 PARENT_ID가 다른 개체의 ID라면, 그 ID는 부모
+
+2. 자식 수 계산
+→ PARENT_ID로 그룹화하여 몇 번 등장하는지를 세면 자식 수를 알 수 있음
+```MySQL
+SELECT PARENT_ID, COUNT(*) AS CHILD_COUNT
+FROM ECOLI_DATA
+WHERE PARENT_ID IS NOT NULL
+GROUP BY PARENT_ID
+```
+
+3. 모든 개체 포함
+→ 위 쿼리엔 부모가 아닌 개체(즉 자식이 없는 개체)가 빠짐
+→ 원본 테이블(ECOLI_DATA)과 위 결과를 LEFT JOIN해서 NULL이면 0으로 처리
+
+4. 정렬
+→ ID 오름차순
+
 # [level 3] 대장균들의 자식의 수 구하기 - 299305 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/299305) 
