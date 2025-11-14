@@ -1,0 +1,10 @@
+/* 상품코드 별 매출액(판매가 * 판매량) 합계
+*/
+SELECT 
+    p.PRODUCT_CODE,
+    SUM(p.PRICE * o.SALES_AMOUNT)  AS SALES
+FROM PRODUCT p, OFFLINE_SALE o
+WHERE p.product_id = o.product_id
+GROUP BY PRODUCT_CODE
+ORDER BY SALES DESC, PRODUCT_CODE ASC;
+# SELECT * FROM PRODUCT;
