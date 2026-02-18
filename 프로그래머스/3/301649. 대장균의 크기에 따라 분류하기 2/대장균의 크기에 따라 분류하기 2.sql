@@ -1,0 +1,15 @@
+SELECT
+    ID,
+    CASE NT
+        WHEN 1 THEN 'CRITICAL'  -- 상위 0~25%
+        WHEN 2 THEN 'HIGH'      -- 26~50%
+        WHEN 3 THEN 'MEDIUM'    -- 51~75%
+        WHEN 4 THEN 'LOW'       -- 76~100%
+    END AS COLONY_NAME
+FROM (
+    SELECT
+        ID,
+        NTILE(4) OVER (ORDER BY SIZE_OF_COLONY DESC) AS NT
+    FROM ECOLI_DATA
+) t
+ORDER BY ID ASC;
