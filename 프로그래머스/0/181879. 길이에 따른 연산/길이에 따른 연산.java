@@ -1,19 +1,12 @@
+import java.util.stream.*;
+import java.util.*;
+
 class Solution {
     public int solution(int[] num_list) {
-        int sum = 0;
-        int multiple = 1;
         if (num_list.length >= 11) {
-            for (int num : num_list) {
-                sum += num;
-            }
-            
-            return sum;
+            return Arrays.stream(num_list).sum();
         } else {
-            for (int num : num_list) {
-                multiple *= num;
-            }
-            
-            return multiple;
+            return Arrays.stream(num_list).reduce(1, (a, b) -> a * b);
         }
     }
 }
