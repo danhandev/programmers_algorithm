@@ -4,7 +4,7 @@ class Solution {
     public int solution(int[] rank, boolean[] attendance) {
         List<Integer> list = new ArrayList<>();
         
-        for (int i = 0; i < rank.length; i++) {
+        for (int i = 0; i < attendance.length; i++) {
             if (attendance[i]) {
                 list.add(i);
             }
