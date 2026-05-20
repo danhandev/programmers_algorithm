@@ -1,11 +1,10 @@
 class Solution {
     public int solution(int n) {
-        for (int p = 1; p <= n * 6; p++) {
-            if (p % n == 0 && p % 6 == 0) {
-                return p / 6;
-            }
-        }
-        
-        return -1;
+        return n / getGCD(n, 6);
+    }
+    
+    private int getGCD(int a, int b) {
+        if (b == 0) return a;
+        return getGCD(b, a % b);
     }
 }
