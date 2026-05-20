@@ -19,11 +19,6 @@ class Solution {
             }
         }
         
-        String[] result = new String[pictureMultipleK.size()];
-        for (int i = 0; i < pictureMultipleK.size(); i++) {
-            result[i] = pictureMultipleK.get(i);
-        }
-        
-        return result;
+        return pictureMultipleK.toArray(new String[0]);
     }
 }
