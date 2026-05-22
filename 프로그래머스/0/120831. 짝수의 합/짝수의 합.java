@@ -1,10 +1,10 @@
+import java.util.stream.*;
+
 class Solution {
-    public int solution(int n) {
-        int sum = 0;
-        for (int i = 0; i <= n; i += 2) {
-            sum += i;
-        }
+    public int solution(int n)  {
         
-        return sum;
+        return IntStream.rangeClosed(0, n)
+            .filter(i -> i % 2 == 0)
+            .sum();
     }
 }
