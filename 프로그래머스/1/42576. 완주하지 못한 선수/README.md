@@ -1,22 +1,10 @@
-# 학습 포인트 
-
-[블로그 정리 링크](https://danhandev.tistory.com/entry/%EC%A0%95%EB%A0%AC-%EC%97%86%EB%8A%94-%ED%83%90%EC%83%89-%EB%AC%B8%EC%A0%9C%EC%97%90%EB%8A%94-HashMap-%E2%80%94-%EC%99%84%EC%A3%BC%ED%95%98%EC%A7%80-%EB%AA%BB%ED%95%9C-%EC%84%A0%EC%88%98-%EB%AC%B8%EC%A0%9C-%EB%B3%B5%EA%B8%B0)
-
-- 사고 흐름
-  - 동명이인(중복)이 있으므로 단순 비교는 불가 -> 카운팅(Counting) 필요
-  - 정렬로 비교할까, 해시로 비교할까? -> 정렬은 O(n log n), 해시는 O(n) -> 해시가 더 효율적
-- 문자열 비교 시 ==은 주소(참조값) 비교, equals()는 내용 비교
-- 배열 길이는 participant.length
-- 배열 마지막 원소 접근 arr[arr.length - 1] <- Java는 음수 인덱스 불가
-
-
 # [level 1] 완주하지 못한 선수 - 42576 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42576?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42576) 
 
 ### 성능 요약
 
-메모리: 96.9 MB, 시간: 322.68 ms
+메모리: 103 MB, 시간: 37.85 ms
 
 ### 구분
 
@@ -28,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 10월 17일 17:24:11
+2026년 05월 22일 15:25:28
 
 ### 문제 설명
 
