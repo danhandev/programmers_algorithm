@@ -2,20 +2,18 @@ import java.util.*;
 
 class Solution {
     public int[] solution(String my_string) {
-        List<Integer> numList = new ArrayList<>();
+        my_string = my_string.replaceAll("[a-z]", "");
         
-        for (int i = 0; i < my_string.length(); i++) {
+        int[] numArray = new int[my_string.length()];
+        
+        for (int i = 0; i < numArray.length; i++) {
             char num = my_string.charAt(i);
             
             if (num >= '0' && num <= '9') {
-                numList.add(num - '0');
+                numArray[i] = num - '0';
             }
         }
         
-        int[] numArray = new int[numList.size()];
-        for (int i = 0; i < numArray.length; i++) {
-            numArray[i] = numList.get(i);
-        }
         Arrays.sort(numArray);
         
         return numArray;
