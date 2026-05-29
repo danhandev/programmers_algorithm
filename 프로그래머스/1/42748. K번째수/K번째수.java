@@ -2,26 +2,18 @@ import java.util.*;
 
 class Solution {
     public int[] solution(int[] array, int[][] commands) {
-        int[] answer = new int[commands.length];
-        int idx = 0;
-        
-        for (int[] command : commands) {
-            answer[idx++] = findK(array, command);
+        int[] result = new int[commands.length];
+        System.out.println(commands.length);
+        for (int i = 0; i < commands.length; i++) {
+            int[] command = commands[i];
+            int[] sliceArray = Arrays.copyOfRange(array, command[0] - 1, command[1]);
+            
+            Arrays.sort(sliceArray);
+            
+            result[i] = sliceArray[command[2] - 1];
         }
         
-        return answer;
-    }
-    
-    private int findK(int[] array, int[] command) {
-        int i = command[0], j = command[1], k = command[2];
-        List<Integer> cuttedArray = new ArrayList<>();
+        return result;
         
-        for (int idx = i - 1; idx < j; idx++) {
-            cuttedArray.add(array[idx]);
-        }
-        
-        Collections.sort(cuttedArray);
-        
-        return cuttedArray.get(k - 1);
     }
 }
