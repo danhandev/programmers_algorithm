@@ -3,13 +3,7 @@ import java.util.stream.*;
 
 class Solution {
     public int[] solution(int n) {
-        List<Integer> list = new ArrayList<>();
-        for (int i = 1; i <= n; i++) {
-            if (n % i == 0) {
-                list.add(i);
-            }
-        }
 
-        return list.stream().mapToInt(i -> i).toArray();
+        return IntStream.rangeClosed(1, n).filter(i -> n % i == 0).toArray();
     }
 }
