@@ -4,15 +4,10 @@ class Solution {
         
         for (int i = 0; i < quiz.length; i++) {
             String[] tokens = quiz[i].split(" ");
-            int operand1 = Integer.parseInt(tokens[0]);
-            int operand2 = Integer.parseInt(tokens[2]);
-            int result = Integer.parseInt(tokens[4]);
             
-            if (tokens[1].equals("+")) {
-                answer[i] = (operand1 + operand2 == result) ? "O" : "X";
-            } else {
-                answer[i] = (operand1 - operand2 == result) ? "O" : "X";
-            }
+            int operator = tokens[1].equals("+") ? 1 : -1;
+            int left = Integer.parseInt(tokens[0]) + operator * Integer.parseInt(tokens[2]);
+            answer[i] = left == Integer.parseInt(tokens[4]) ? "O" : "X";
         }
         
         return answer;
