@@ -1,11 +1,10 @@
 import java.util.*;
 
 class Solution {
-    // 상, 하, 좌, 우 방향을 나타내는 배열 (행: r, 열: c 구조로 통일)
-    static int[] dr = {-1, 1, 0, 0};
-    static int[] dc = {0, 0, -1, 1}; 
-    
     public int solution(int[][] maps) {
+        int[] dr = {1, -1, 0, 0};
+        int[] dc = {0, 0, -1, 1};
+        
         int n = maps.length;
         int m = maps[0].length;
         
