@@ -2,46 +2,48 @@ import java.util.*;
 
 class Solution {
     public int solution(int n, int[][] edge) {
+        // 간선 그래프 초기화
         List<List<Integer>> graph = new ArrayList<>();
-        for (int i = 0; i <= n; i++) {
+        for (int i = 0; i < n; i++) {
             graph.add(new ArrayList<>());
         }
-        for (int[] e : edge) {
-            graph.get(e[0]).add(e[1]);
-            graph.get(e[1]).add(e[0]);
-        }
-
-        int[] dist = new int[n + 1]; // 각 노드까지의 최단 거리 저장 (0은 미방문)
-        Arrays.fill(dist, -1);
+        for (int i = 0; i < edge.length; i++) {
+            graph.get(edge[i][0] - 1).add(edge[i][1] - 1);
+            graph.get(edge[i][1] - 1).add(edge[i][0] - 1);
+        }   
+        
+        // 거리 배열, 미방문 시 -1
+        int[] distance = new int[n];
+        Arrays.fill(distance, -1);
+        
+        int maxDistance = -1;
+        
+        // 방문할 노드
         Queue<Integer> q = new ArrayDeque<>();
-
-        // 시작점(1번 노드) 설정
-        q.add(1);
-        dist[1] = 0;
-
-        int maxDist = 0;
-
-        // 3. BFS 탐색
+        
+        // 시작 노드 세팅
+        q.add(0);
+        distance[0] = 0;
+        
         while (!q.isEmpty()) {
-            int curr = q.poll();
-
-            for (int neighbor : graph.get(curr)) {
-                if (dist[neighbor] == -1) { // 방문하지 않은 노드라면
-                    dist[neighbor] = dist[curr] + 1;
-                    maxDist = Math.max(maxDist, dist[neighbor]);
+            int current = q.poll();
+            
+            for (int neighbor : graph.get(current)) {
+                if (distance[neighbor] == -1) {
+                    distance[neighbor] = distance[current] + 1;
                     q.add(neighbor);
+                    maxDistance = Math.max(maxDistance, distance[neighbor]);
                 }
             }
         }
-
-        // 4. 최댓값 거리와 같은 노드 개수 세기
+        
         int count = 0;
-        for (int i = 1; i <= n; i++) {
-            if (dist[i] == maxDist) {
+        for (int i = 0; i < n; i++) {
+            if (distance[i] == maxDistance) {
                 count++;
             }
         }
-
+        
         return count;
     }
 }
