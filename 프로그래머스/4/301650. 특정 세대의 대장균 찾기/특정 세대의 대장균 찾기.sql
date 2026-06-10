@@ -1,8 +1,5 @@
-# JOIN 2번
-SELECT
-    t.ID
-FROM ECOLI_DATA t
-JOIN ECOLI_DATA s ON s.ID = t.PARENT_ID
-JOIN ECOLI_DATA f ON f.ID = s.PARENT_ID
-WHERE f.PARENT_ID is null
-ORDER BY t.ID ASC;
+# SELECT id FROM ecoli_data WHERE parent_id IN (SELECT id FROM ecoli_data WHERE parent_id IN (SELECT id FROM ecoli_data WHERE parent_id IS NULL));
+
+WITH a as (SELECT id FROM ecoli_data WHERE parent_id IS NULL),
+    b as (SELECT id FROM ecoli_data WHERE parent_id IN (select * from a))
+select id FROM ecoli_data WHERE parent_id IN (select * from b);
