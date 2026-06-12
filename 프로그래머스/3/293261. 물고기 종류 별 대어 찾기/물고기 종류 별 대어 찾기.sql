@@ -1,14 +1,30 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/293261?language=mysql
+
+# 1차 풀이
+# SELECT 
+#     f.id,
+#     n.fish_name,
+#     f.length AS length
+# FROM fish_info f
+# JOIN fish_name_info n ON f.fish_type = n.fish_type
+# JOIN (SELECT 
+#         fish_type,
+#         MAX(length) AS max_length
+#      FROM fish_info
+#      GROUP BY fish_type) m ON f.fish_type = f.fish_type
+# WHERE f.length = m.max_length
+# GROUP BY f.fish_type;
+
 SELECT 
-    i.ID,
-    n.FISH_NAME,
-    i.LENGTH
-FROM FISH_INFO i
+    f.id,
+    n.fish_name,
+    f.length AS length
+FROM fish_info f
+JOIN fish_name_info n ON f.fish_type = n.fish_type
 JOIN (SELECT 
-            FISH_TYPE,
-            MAX(LENGTH) AS MAX_LENGTH
-      FROM FISH_INFO
-      GROUP BY FISH_TYPE) m
-ON i.FISH_TYPE = m.FISH_TYPE AND i.LENGTH = m.MAX_LENGTH
-JOIN FISH_NAME_INFO n
-ON i.FISH_TYPE = n.FISH_TYPE
-ORDER BY i.ID ASC;
+        fish_type,
+        MAX(length) AS max_length
+     FROM fish_info
+     GROUP BY fish_type) m ON f.fish_type = m.fish_type
+WHERE f.length = m.max_length
+GROUP BY f.fish_type;
