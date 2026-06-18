@@ -1,12 +1,13 @@
--- 코드를 입력하세요
-SELECT 
+SELECT
     FOOD_TYPE,
-    REST_ID, 
-    REST_NAME, 
+    REST_ID,
+    REST_NAME,
     FAVORITES
-FROM rest_info r1
-WHERE FAVORITES = (
-    SELECT MAX(favorites)
-    FROM rest_info r2
-    WHERE r1.food_type = r2.food_type)
-ORDER BY food_type DESC;
+FROM REST_INFO
+WHERE (FOOD_TYPE, FAVORITES) IN (
+    SELECT
+        FOOD_TYPE, MAX(FAVORITES)
+    FROM REST_INFO
+    GROUP BY FOOD_TYPE)
+ORDER BY FOOD_TYPE DESC;
+
