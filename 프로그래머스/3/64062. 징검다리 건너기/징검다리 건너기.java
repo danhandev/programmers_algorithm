@@ -1,36 +1,36 @@
 class Solution {
-    public int solution(int[] stones, int k) {   
+    public int solution(int[] stones, int k) {
         int min = 1;
-        int max = 200000000;
-        int answer = 0;
+        int max = 200_000_000;
+        int mid = min + (max - min) / 2;
+        int result = 0;
         
         while (min <= max) {
-            int mid = min + (max - min) / 2;
-
-            // mid 명의 인원이 건널 수 있는지 확인
-            if (canCross(stones, k, mid)) {
-                answer = mid;
+            mid = min + (max - min) / 2;
+            System.out.println(min + " " + mid + " " + max + " " + canCross(k, mid, stones));
+            
+            if (canCross(k, mid, stones)) {
+                result = mid;
                 min = mid + 1;
             } else {
-                max = mid - 1;
+                max = mid - 1; 
             }
         }
-        
-        return answer;
+        return result;
     }
     
-    private boolean canCross(int[] stones, int k, int mid) {
-        int skipCount = 0;
+    private boolean canCross(int k, int mid, int[] stones) {
+        int serialize = 0;
         
-        for (int stone : stones) {
-            if (stone < mid) {
-                skipCount++;
-                
-                if (skipCount >= k) {
-                    return false;
-                }
+        for (int s : stones) {
+            if (s < mid) {
+                serialize++;
             } else {
-                skipCount = 0;
+                serialize = 0;
+            }
+            
+            if (serialize >= k) {
+                return false;
             }
         }
         
