@@ -3,17 +3,22 @@ import java.util.*;
 class Solution {
     public int[] solution(int[] array, int[][] commands) {
         int[] result = new int[commands.length];
-        System.out.println(commands.length);
-        for (int i = 0; i < commands.length; i++) {
-            int[] command = commands[i];
-            int[] sliceArray = Arrays.copyOfRange(array, command[0] - 1, command[1]);
+        
+        for (int n = 0; n < commands.length; n++) {
+            int i = commands[n][0];
+            int j = commands[n][1];
+            int k = commands[n][2];
             
-            Arrays.sort(sliceArray);
+            int[] slice_array = new int[j - i + 1];
+            for (int m = 0; m < j - i + 1; m++) {
+                slice_array[m] = array[m + i - 1];
+            }
             
-            result[i] = sliceArray[command[2] - 1];
+            Arrays.sort(slice_array);
+            
+            result[n] = slice_array[k - 1];
         }
         
         return result;
-        
     }
 }
