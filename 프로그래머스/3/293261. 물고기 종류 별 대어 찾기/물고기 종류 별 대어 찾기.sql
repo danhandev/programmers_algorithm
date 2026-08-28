@@ -1,30 +1,15 @@
-# https://school.programmers.co.kr/learn/courses/30/lessons/293261?language=mysql
-
-# 1차 풀이
-# SELECT 
-#     f.id,
-#     n.fish_name,
-#     f.length AS length
-# FROM fish_info f
-# JOIN fish_name_info n ON f.fish_type = n.fish_type
-# JOIN (SELECT 
-#         fish_type,
-#         MAX(length) AS max_length
-#      FROM fish_info
-#      GROUP BY fish_type) m ON f.fish_type = f.fish_type
-# WHERE f.length = m.max_length
-# GROUP BY f.fish_type;
-
-SELECT 
-    f.id,
-    n.fish_name,
-    f.length AS length
-FROM fish_info f
-JOIN fish_name_info n ON f.fish_type = n.fish_type
+# 물고기 종류 별
+# 가장 큰 물고기
+# 물고기의 ID에 대해 오름차순 정렬
+SELECT
+    f.ID,
+    i.FISH_NAME,
+    f.LENGTH
+FROM FISH_INFO f
 JOIN (SELECT 
-        fish_type,
-        MAX(length) AS max_length
-     FROM fish_info
-     GROUP BY fish_type) m ON f.fish_type = m.fish_type
-WHERE f.length = m.max_length
-GROUP BY f.fish_type;
+        MAX(LENGTH) AS MAX_LENGTH,
+        FISH_TYPE
+    FROM FISH_INFO
+    GROUP BY FISH_TYPE) m ON m.MAX_LENGTH = f.LENGTH AND m.FISH_TYPE = f.FISH_TYPE
+JOIN FISH_NAME_INFO i ON i.FISH_TYPE = f.FISH_TYPE
+ORDER BY ID ASC
